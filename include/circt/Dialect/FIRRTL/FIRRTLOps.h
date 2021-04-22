@@ -71,6 +71,12 @@ bool isBundleType(Type type);
 /// connect.
 bool isDuplexValue(Value val);
 
+namespace flow {
+  enum Flow { Source, Sink, Duplex };
+}
+
+flow::Flow foldFlow(Value val, flow::Flow acc = flow::Source);
+
 } // namespace firrtl
 } // namespace circt
 
