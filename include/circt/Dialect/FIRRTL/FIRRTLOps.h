@@ -77,6 +77,12 @@ namespace flow {
 
 flow::Flow foldFlow(Value val, flow::Flow acc = flow::Source);
 
+namespace kind {
+  enum Kind { Port, Instance, Other };
+}
+
+kind::Kind getDeclarationKind(Value val);
+
 } // namespace firrtl
 } // namespace circt
 
