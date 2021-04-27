@@ -669,8 +669,12 @@ circuit MyModule :     ; CHECK: firrtl.circuit "MyModule" {
     ; CHECK: firrtl.connect %out0, [[INV]]
     out0 is invalid
 
+    ; CHECK: [[OUT1_A:%.+]] = firrtl.subfield %out1("a")
     ; CHECK: [[INV:%.+]] = firrtl.invalidvalue
-    ; CHECK: firrtl.connect %out1, [[INV]]
+    ; CHECK: firrtl.connect [[OUT1_A]], [[INV]]
+    ; CHECK: [[OUT1_B:%.+]] = firrtl.subfield %out1("b")
+    ; CHECK: [[INV:%.+]] = firrtl.invalidvalue
+    ; CHECK: firrtl.connect [[OUT1_B]], [[INV]]
     out1 is invalid
 
     ; CHECK: [[OUT2_A:%.+]] = firrtl.subfield %out2("a")
@@ -717,8 +721,9 @@ circuit MyModule :     ; CHECK: firrtl.circuit "MyModule" {
 
     ; CHECK: [[INV:%.+]] = firrtl.invalidvalue
     ; CHECK: firrtl.connect %U0_in0, [[INV]]
+    ; CHECK: [[U0_IN1_A:%.+]] = firrtl.subfield %U0_in1("a")
     ; CHECK: [[INV:%.+]] = firrtl.invalidvalue
-    ; CHECK: firrtl.connect %U0_in1, [[INV]]
+    ; CHECK: firrtl.connect [[U0_IN1_A]], [[INV]]
     U0 is invalid
 
   ; https://github.com/llvm/circt/issues/606
