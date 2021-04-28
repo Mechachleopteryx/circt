@@ -233,8 +233,7 @@ createWrapperModule(MemOp op, const MemoryPortList &memPorts,
   auto extResultIt = instanceOp.result_begin();
   for (auto memPort : moduleOp.getArguments()) {
     auto memPortType = memPort.getType().cast<FIRRTLType>();
-    for (auto field :
-         memPortType.cast<BundleType>().getElements()) {
+    for (auto field : memPortType.cast<BundleType>().getElements()) {
       auto fieldValue =
           builder.create<SubfieldOp>(op.getLoc(), memPort, field.name);
       // Create the connection between module arguments and the external module,
