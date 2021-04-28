@@ -1869,8 +1869,7 @@ bool HandshakeBuilder::visitHandshake(MemoryOp op) {
                                writeValidBufferMux);
 
     // Get the store enable out of the bundle.
-    auto memEnable =
-        rewriter.create<SubfieldOp>(insertLoc, memBundle, "en");
+    auto memEnable = rewriter.create<SubfieldOp>(insertLoc, memBundle, "en");
 
     // Connect the write valid signal to the memory enable.
     rewriter.create<ConnectOp>(insertLoc, memEnable, writeValid);
